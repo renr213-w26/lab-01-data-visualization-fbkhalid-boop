@@ -58,7 +58,19 @@ midwest |>
 ```
 The distribution of population density is very right-skewed. The boxplot has a very compressed box representing IQR on the far left, which means that the vast majority of counties have very low population density. There are many outliers extending to the right side of the x-axis. By sorting population density descendingly, we can see that Cook County is the biggest outlier, which makes sense considering it contains Chicago.
 ### Question 3
+```{r}
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state, shape = state)) +
+  geom_point() +
+  labs(title = "Poverty vs College Education by State",
+       x = "Percent College Educated",
+       y = "Percent Below Poverty",
+       color = "State", shape = "State")
 
+midwest |> 
+  select(county, state, percbelowpoverty, percollege) |> 
+  arrange(desc(percbelowpoverty))
+```
+It looks like there is a weak negative relationship between these variables generally, as the percentage of college-educated residents increases, the percentage of people below the poverty line decreases. There is a specific outlier county called Menominee in Wisconsin with low college education but very high poverty that sits far above the rest of the data. It is somewhat difficult to identify how the relationship varies across states in this plot because all the points are plotted on top of each other which makes it hard to distinguish the specific trends for each state.
 ### Question 4
 
 ### Question 5
