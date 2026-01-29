@@ -137,7 +137,7 @@ ggplot(nc_county, aes(x = land_area_mi2, y = density)) +
        x = "Land Area (Square Miles)",
        y = "Population Density")
 ```
-I guessed that there might be a negative relationship because large counties are often rural and have lower population densities. The scatter plot confirms this as it shows a weak negative relationship where counties with very large land areas tend to have lower population densities while the highest density counties have smaller land areas. My guess was not completely correct as there does not seem to be at least a very obvious correlation.
+I guessed that there might be a negative relationship because large counties are often rural and have lower population densities. The scatter plot might show a very weak negative relationship where counties with very large land areas tend to have lower population densities while the highest density counties have smaller land areas but my guess was not completely correct as there does not seem to be at least a very obvious correlation.
 
 ### Question 9
 
