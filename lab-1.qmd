@@ -17,10 +17,6 @@ library(tidyverse)
 
 ```{r}
 
-
-```
-```{r}
-
 ggplot(midwest, aes(x = popdensity)) +
   geom_histogram(binwidth = 100) +
   labs(title = "Midwest Population Density", subtitle = "Binwidth = 100", 
@@ -45,7 +41,7 @@ ggplot(midwest, aes(x = popdensity)) +
        x = "Density", y = "Count")
 
 ```
-The binwidth of 10000 looks the best as it groups the data enough so you can see that almost everyone is in that first few buckets, but you can clearly see the long tail stretching to the right (the outliers). 
+The binwidth of 10000 looks the best as it groups the data enough so you can see that almost everyone is in that first few buckets, but you can clearly see the long tail stretching to the right (the outliers). The plot with a binwidth of 100 is too messy and detailed to see the overall trend while the plot with a binwidth of 100,000 puts almost all the data into a single block which hides the shape of the distribution. The binwidth of 10,000 strikes a good balance by showing that the distribution is extremely right skewed while still showing us that there are a few counties with very high densities.
 
 ### Question 2
 ```{r}
@@ -142,7 +138,9 @@ ggplot(nc_county, aes(x = land_area_mi2, y = density)) +
        y = "Population Density")
 ```
 I guessed that there might be a negative relationship because large counties are often rural and have lower population densities. The scatter plot confirms this as it shows a weak negative relationship where counties with very large land areas tend to have lower population densities while the highest density counties have smaller land areas. My guess was not completely correct as there does not seem to be at least a very obvious correlation.
+
 ### Question 9
+
 ```{r}
 ggplot(nc_county, aes(x = land_area_m2, y = density)) +
   geom_point() +
