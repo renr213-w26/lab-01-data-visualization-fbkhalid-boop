@@ -4,13 +4,46 @@ format: html
 editor: visual
 ---
 
+
+
 # Questions
+```{r}
+library(tidyverse)
+```
 
 ## Part 1
 
 ### Question 1
 
+```{r}
+
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(binwidth = 100) +
+  labs(title = "Binwidth 100")
+```
+```{r}
+# Histogram 2: Binwidth 1000
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(binwidth = 1000) +
+  labs(title = "Binwidth 1000")
+# Histogram 3: Binwidth 10000
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(binwidth = 10000) +
+  labs(title = "Binwidth 10000")
+# Histogram 4: Binwidth 100000
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(binwidth = 100000) +
+  labs(title = "Binwidth 100000")
+
+```
+The binwidth of 10000 looks the best as it groups the data enough so you can see that almost everyone is in that first few buckets, but you can clearly see the long tail stretching to the right (the outliers). 
+
 ### Question 2
+```{r}
+ggplot(midwest, aes(x = popdensity)) +
+  geom_boxplot() +
+  labs(title = "Population Density Boxplot")
+```
 
 ### Question 3
 
