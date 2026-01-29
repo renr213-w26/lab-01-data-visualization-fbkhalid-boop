@@ -72,10 +72,42 @@ midwest |>
 ```
 It looks like there is a weak negative relationship between these variables generally, as the percentage of college-educated residents increases, the percentage of people below the poverty line decreases. There is a specific outlier county called Menominee in Wisconsin with low college education but very high poverty that sits far above the rest of the data. It is somewhat difficult to identify how the relationship varies across states in this plot because all the points are plotted on top of each other which makes it hard to distinguish the specific trends for each state.
 ### Question 4
-
+```{r}
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  facet_wrap(~ state) +
+  labs(title = "Poverty vs College Education Faceted by State",
+       x = "Percent College Educated",
+       y = "Percent Below Poverty",
+       color = "State")
+```
+I prefer this plot over the plot in Question 3 because separating the states into their own graphs reduces the stacked points and makes it much easier to see the specific trends for each state. In the previous plot the points were too cluttered to see the differences but here we can clearly see that every state follows a similar negative trend. The smooth curve definitely helps identify trends and which states have stronger ones vs weaker ones.
 ### Question 5
+```{r}
+ggplot(midwest, aes(x = state, y = area)) +
+  geom_boxplot() +
+  labs(title = "Distribution of County Area by State",
+       x = "State", y = "Area")
 
+midwest |> 
+  select(county, state, area) |> 
+  arrange(desc(area))
+```
+Indiana looks to have the smallest median county area while Wisconsin and Michigan have larger median areas. Wisconsin appears to have the highest variability in county sizes as shown by their wider boxplots and longer whiskers. The state with the single largest county is Marquette, Michigan using the table.
 ### Question 6
+```{r}
+# Create the new variable
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
+
+# Plot the data
+ggplot(midwest, aes(x = state, fill = metro)) +
+  geom_bar(position = "fill") +
+  labs(title = "Proportion of Metro Counties by State",
+       x = "State", y = "Proportion", fill = "Metro Area")
+```
+It looks like Ohio has the highest percentage of counties located in metropolitan areas with a little less than 50 percent of its counties classified as metro. On the other hand Illinois appears to have the lowest percentages of metro counties at just over 25 percent.
 
 ### Question 7
 
