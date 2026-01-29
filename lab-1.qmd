@@ -43,6 +43,12 @@ The binwidth of 10000 looks the best as it groups the data enough so you can see
 ggplot(midwest, aes(x = popdensity)) +
   geom_boxplot() +
   labs(title = "Population Density Boxplot")
+
+install.packages("usethis")
+library(usethis)
+use_git_config(user.name = "fbkhalid-boop", user.email = "fbkhalid@ualberta.ca")
+git_sitrep()
+gitcreds::gitcreds_set()
 ```
 
 ### Question 3
