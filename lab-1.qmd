@@ -110,7 +110,23 @@ ggplot(midwest, aes(x = state, fill = metro)) +
 It looks like Ohio has the highest percentage of counties located in metropolitan areas with a little less than 50 percent of its counties classified as metro. On the other hand Illinois appears to have the lowest percentages of metro counties at just over 25 percent.
 
 ### Question 7
+```{r}
+ggplot(midwest, aes(x = percollege, y = popdensity, color = state)) +
+  geom_point(size = 2, alpha = 0.5) +
+  facet_wrap(~ state) +
+  scale_y_continuous(limits = c(0, 125000)) +
+  labs(title = "Do people with college degrees\ntend to live in denser areas?",
+       x = "% college educated",
+       y = "Population density (person / unit area)",
+       color = "State") +
+  theme_minimal()
 
+midwest |> 
+  filter(state == "WI") |> 
+  arrange(desc(popdensity)) |> 
+  select(county, popdensity, percblack, percasian, percamerindan, percother)
+```
+A clear outlier in Wisconsin is Milwaukee. It has a much higher population density than any other county in the state. This county has a much higher percentage of other races compared to the typical Wisconsin county. For example the data shows that Milwaukee has a very high percentage of African American residents at over 20%, along with about 1.6% Asian, 0.7% Native American and 2.4% Other.
 ## Part 2
 
 **Enough about the Midwest!**

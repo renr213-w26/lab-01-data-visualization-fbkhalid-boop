@@ -313,11 +313,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="question-7" class="level3">
 <h3 class="anchored" data-anchor-id="question-7">Question 7</h3>
-</section>
-</section>
-<section id="part-2" class="level2">
-<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">x =</span> percollege, <span class="at">y =</span> popdensity, <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> state) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">125000</span>)) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Do people with college degrees</span><span class="sc">\n</span><span class="st">tend to live in denser areas?"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"% college educated"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Population density (person / unit area)"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"State"</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>midwest <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"WI"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(popdensity)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(county, popdensity, percblack, percasian, percamerindan, percother)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 72 × 6
+   county     popdensity percblack percasian percamerindan percother
+   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+ 1 MILWAUKEE      63952.    20.4       1.60          0.729     2.35 
+ 2 WAUKESHA        8962.     0.360     0.886         0.221     0.635
+ 3 RACINE          8752.     9.71      0.574         0.298     2.52 
+ 4 KENOSHA         8011.     4.13      0.522         0.368     2.00 
+ 5 BROWN           6081.     0.520     1.30          1.99      0.293
+ 6 DANE            5029.     2.86      2.36          0.327     0.569
+ 7 OZAUKEE         4855.     0.676     0.601         0.174     0.135
+ 8 WINNEBAGO       4009.     0.497     1.23          0.488     0.277
+ 9 WASHINGTON      3813.     0.131     0.354         0.218     0.202
+10 OUTAGAMIE       3798.     0.147     1.36          1.40      0.279
+# ℹ 62 more rows</code></pre>
+</div>
+</div>
+<p>A clear outlier in Wisconsin is Milwaukee. It has a much higher population density than any other county in the state. This county has a much higher percentage of other races compared to the typical Wisconsin county. For example the data shows that Milwaukee has a very high percentage of African American residents at over 20%, along with about 1.6% Asian, 0.7% Native American and 2.4% Other. ## Part 2</p>
 <p><strong>Enough about the Midwest!</strong></p>
+</section>
 <section id="question-8" class="level3">
 <h3 class="anchored" data-anchor-id="question-8">Question 8</h3>
 </section>
