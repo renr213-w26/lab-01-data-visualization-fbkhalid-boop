@@ -132,5 +132,23 @@ A clear outlier in Wisconsin is Milwaukee. It has a much higher population densi
 **Enough about the Midwest!**
 
 ### Question 8
+```{r}
+nc_county <- read_csv("data/nc-county.csv")
 
+ggplot(nc_county, aes(x = land_area_mi2, y = density)) +
+  geom_point() +
+  labs(title = "Population Density vs Land Area (Square Miles)",
+       x = "Land Area (Square Miles)",
+       y = "Population Density")
+```
+I guessed that there might be a negative relationship because large counties are often rural and have lower population densities. The scatter plot confirms this as it shows a weak negative relationship where counties with very large land areas tend to have lower population densities while the highest density counties have smaller land areas. My guess was not completely correct as there does not seem to be at least a very obvious correlation.
 ### Question 9
+```{r}
+ggplot(nc_county, aes(x = land_area_m2, y = density)) +
+  geom_point() +
+  labs(title = "Population Density vs Land Area (Square Meters)",
+       x = "Land Area (Square Meters)",
+       y = "Population Density")
+```
+
+This scatterplot looks exactly the same as the one in question 8. The relationship is displayed the same because square miles and square meters are just different units for measuring the exact same thing. Changing the units changes the numbers on the axis but does not change the shape of the data points relative to each other.
